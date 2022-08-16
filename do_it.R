@@ -56,4 +56,5 @@ t_focal <- dplyr::filter(t_clean, t_clean$allele_name %in% bbbq::get_mhc2_haplot
 aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+$")
 
 t_clean_focal <- t_focal[stringr::str_detect(t_focal$sequence, aa_sequence_regex), ]
-readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv")
+
+readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv", quote = "none")
