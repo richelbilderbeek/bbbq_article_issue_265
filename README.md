@@ -54,9 +54,9 @@ Filename                          | Source
 
 ```mermaid
 graph TD;
-    A[https://www.iedb.org/database_export_v3.php]-->|Click on 'mhc\_ligand\_full (single\_file.zip)'|B[https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip];
+    A[https://www.iedb.org/database_export_v3.php]-->|Click on 'mhc\\_ligand\\_full (single\\_file.zip)'|B[https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip];
     B-->|Unzip|C[mhc\_ligand\_full.csv];
-    C-->|Run 'do\_it.R'|D[epitopes\_for\_mhc2\_alleles.csv];
+    C-->|Run 'do\\_it.R'|D[epitopes\_for\_mhc2\_alleles.csv];
 ```
 
 
