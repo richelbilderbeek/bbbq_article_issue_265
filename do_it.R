@@ -1,3 +1,4 @@
+setwd("~/GitHubs/bbbq_article_issue_265/")
 proteome <- bbbq::get_proteome(
   target_name = "human",
   keep_selenoproteins = FALSE,
@@ -30,6 +31,11 @@ if (1 == 2) {
   allele_filename_map <- allele_filename_map[1:3, ]
 }
 
+
+t <- readr::read_csv("mhc_ligand_full.csv")
+"linear_sequence" in names(t)
+"Linear_sequence" in names(t)
+"Linear sequence" in names(t)
 
 # FAILS
 # https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip

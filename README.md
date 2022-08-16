@@ -42,3 +42,14 @@ AAAAAAAAAAAAAAAAAAAAGMAELMAGLAAAAAAMNILLQYVVKSFDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 00000000000000000000000000011111111111100000000000000000000000000000000000000000000
 ```
 
+
+## Files
+
+
+Filename                          | Source
+----------------------------------|-------------------------
+`mhc_ligand_full_single_file.zip` | [https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip](https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip) from [https://www.iedb.org/database_export_v3.php](https://www.iedb.org/database_export_v3.php)
+
+
+
+
