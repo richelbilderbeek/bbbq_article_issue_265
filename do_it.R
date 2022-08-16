@@ -2,13 +2,15 @@ setwd("~/GitHubs/bbbq_article_issue_265/")
 proteome <- bbbq::get_proteome(
   target_name = "human",
   keep_selenoproteins = FALSE,
-  proteome_type = "representative"
+  proteome_type = "representative",
+  data_folder = "."
 )
 topology <- bbbq::get_topology(
   target_name = "human",
   keep_selenoproteins = FALSE,
   proteome_type = "representative",
-  topology_prediction_tool = "tmhmm"
+  topology_prediction_tool = "tmhmm",
+  data_folder = "."
 )
 testthat::expect_equal(length(proteome), length(topology))
 testthat::expect_true("name" %in% names(proteome))
@@ -50,6 +52,8 @@ t_clean <- dplyr::select(
 )
 t_focal <- dplyr::filter(t_clean, t_clean$allele_name %in% bbbq::get_mhc2_haplotypes())
 
-readr::write_csv(t_focal, "epitopes_for_mhc2_alleles.csv")
+# Remove complex epitopes such as HPSFKERFHASVRRL + CITR(R7, R14)
+aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+$")
 
-
+t_clean_focal <- t_focal[stringr::str_detect(t_focal$sequence, aa_sequence_regex), ]
+readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv")

@@ -40,3 +40,5 @@ vignettes/*.pdf
 mhc_ligand_full.csv
 head.csv
 epitopes_for_mhc2_alleles.csv
+*.fasta
+*.tmhmm
