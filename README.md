@@ -58,6 +58,17 @@ graph Method;
 ## Files
 
 ```mermaid
+graph Methods;
+    MA-->|Download| MB[Human reference proteome without selenoproteins];
+    MB-->|Merge| MF;
+    MB-->|TMHMM| MC[Topology];
+    MC-->|Merge| MD[All IEDB MHC ligands];
+    MD-->|Filter for focal MHC2 ligands with linear sequences| MD[Epitope sequences for alleles];
+    MD-->|Merge| ME[Results];
+```
+
+
+```mermaid
 graph Files;
     A[https://www.iedb.org/database_export_v3.php]--> |Click on 'mhc_ligand_full, single_file.zip'| B[https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip];
     B--> |Unzip| C[mhc_ligand_full.csv];
