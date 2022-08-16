@@ -1,7 +1,7 @@
 # Methods
 
 ```mermaid
-graph Methods;
+graph TD;
     MA-->|Download| MB[Human reference proteome without selenoproteins];
     MB-->|Merge| MF;
     MB-->|TMHMM| MC[Topology];
