@@ -38,3 +38,5 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 mhc_ligand_full.csv
+head.csv
+epitopes_for_mhc2_alleles.csv

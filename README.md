@@ -49,7 +49,15 @@ AAAAAAAAAAAAAAAAAAAAGMAELMAGLAAAAAAMNILLQYVVKSFDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Filename                          | Source
 ----------------------------------|-------------------------
 `mhc_ligand_full_single_file.zip` | [https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip](https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip) from [https://www.iedb.org/database_export_v3.php](https://www.iedb.org/database_export_v3.php)
+`mhc_ligand_full.csv`             | From `mhc_ligand_full_single_file.zip`
 
 
+```mermaid
+graph TD;
+    `https://www.iedb.org/database_export_v3.php`-->`https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip`;
+    `https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip`-->`mhc_ligand_full.csv`
+    B-->D;
+    C-->D;
+```
 
 
