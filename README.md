@@ -42,20 +42,7 @@ AAAAAAAAAAAAAAAAAAAAGMAELMAGLAAAAAAMNILLQYVVKSFDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 00000000000000000000000000011111111111100000000000000000000000000000000000000000000
 ```
 
-
-## Methods
-
-```mermaid
-graph Method;
-    U[Uniprot]--> |Download| A;
-    A[Human reference proteome without selenoproteins]--> |Merge| E;
-    A--> |TMHMM| B[Topology];
-    B--> |Merge| E;
-    C[All IEDB MHC ligands]--> |Filter for focal MHC-II ligands with linear sequences| D[Epitope sequences for alleles];
-    D--> |Merge| E[Results];
-```
-
-## Files
+## Method
 
 ```mermaid
 graph Methods;
@@ -66,14 +53,4 @@ graph Methods;
     MD-->|Filter for focal MHC2 ligands with linear sequences| MD[Epitope sequences for alleles];
     MD-->|Merge| ME[Results];
 ```
-
-
-```mermaid
-graph Files;
-    A[https://www.iedb.org/database_export_v3.php]--> |Click on 'mhc_ligand_full, single_file.zip'| B[https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip];
-    B--> |Unzip| C[mhc_ligand_full.csv];
-    C--> |Run 'do_it.R'| D[epitopes_for_mhc2_alleles.csv];
-```
-
-> Files
 
