@@ -51,3 +51,31 @@ graph TD;
     C-->|Run 'do_it.R'| D[epitopes_for_mhc2_alleles.csv];
 ```
 
+## Bias for negative distances
+
+Imagine this topology:
+
+```
+01010
+```
+
+This will be talled as such:
+
+Position|Distance to TMH
+--------|---------------
+1       |-1
+2       |0
+3       |-1
+4       |0
+5       |1
+
+Position 3 is right in between two TMHs, so the distance to the closest
+TMH is undecided.
+
+We expect this to be irrelevant in reality, as:
+
+ * we expect TMHs to be separated by many amino acids
+ * we plot from -30 to +30 amino acids
+
+If you see a bias in negative distances, this cause be the cause.
+

@@ -9,6 +9,8 @@ UP000005640_9606_no_u.tmhmm:
 epitopes_for_mhc2_alleles.csv: UP000005640_9606_no_u.fasta UP000005640_9606_no_u.tmhmm
 	Rscript get_epitopes.R
 
+distances.csv: UP000005640_9606_no_u.tmhmm
+	Rscript get_distances.R
 
 
 
