@@ -1,4 +1,4 @@
-all: epitopes_for_mhc2_alleles.csv
+all: epitopes_for_mhc2_alleles.csv distances.csv
 
 UP000005640_9606_no_u.fasta:
 	Rscript get_proteome.R
