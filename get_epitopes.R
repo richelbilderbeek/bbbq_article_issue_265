@@ -1,4 +1,12 @@
-setwd("~/GitHubs/bbbq_article_issue_265/")
+# This is a big file, of several gigabytes that cannot be downloaded using wget.
+# It can be downloaded from here:
+#
+# https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip
+#
+# Unzip it and update the path below
+#
+csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
+
 proteome <- bbbq::get_proteome(
   target_name = "human",
   keep_selenoproteins = FALSE,
@@ -22,11 +30,21 @@ testthat::expect_equal(nchar(proteome$sequence[1]), nchar(topology$sequence[1]))
 testthat::expect_equal(nchar(proteome$name), nchar(topology$name))
 testthat::expect_equal(nchar(proteome$sequence), nchar(topology$sequence))
 
-# https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip
 n_commas <- 111 # max(stringr::str_count(readr::read_lines("head.csv"), ","))
 n_cols <- n_commas + 1
 # csv_filename <- "head.csv"
-csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
+if (!file.exists(csv_filename))
+{
+  stop(
+    "Cannot find .csv filename ", csv_filename, "\n",
+    "  \n",
+    "1. Downloaded the compressed file from: \n",
+    "  \n",
+    "  https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip \n",
+    "  \n",
+    "2. Unzip the file and update the path at the top of this script"
+  )
+}
 testthat::expect_true(file.exists(csv_filename))
 t <- readr::read_csv(csv_filename, skip = 1, n_max = 1)
 
@@ -58,5 +76,4 @@ aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+
 t_clean_focal <- t_focal[stringr::str_detect(t_focal$sequence, aa_sequence_regex), ]
 
 readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv", quote = "none")
-
 

@@ -9,6 +9,13 @@ for MHC-II and epitopes from IEDB.
 
 ![](bianchi_et_2018_fig_3_raw.png)
 
+## Run
+
+```
+make
+```
+
+
 ## Methods
 
 ```mermaid
