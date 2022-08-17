@@ -29,9 +29,9 @@ Sketch of merge:
 
 AAAAAAAAAAAAAAAAAAAAGMAELMAGLAAAAAAMNILLQYVVKSFDAAAAAAAAAAA Uniprot reference proteome sequence
 00000000000000000000000000011111111111100000000000000000000 TMHMM topology
-                    ...-9876543210123456789...              Distances
+                    ...-9876543210123456789...              Distances from TMH
                     +++++++++      +++++++++++++            Tally
-                    0.0   0.5 0.0  0.5       0.5 0.0        Percentage per amino acid
+                    0.0   0.5 0.0  0.5       0.5 0.0        Overlap count
                                
 ```
 
