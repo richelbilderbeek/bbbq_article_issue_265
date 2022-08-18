@@ -1,4 +1,4 @@
-topology_filename <- "UP000005640_9606_no_u.tmhmm"
+topology_filename <- "UP000005640_9606_no_u_tmh_only.tmhmm"
 testthat::expect_true(file.exists(topology_filename))
 t_tmhmm_topology <- pureseqtmr::load_topology_file_as_tibble(topology_filename)
 t_topology <- pureseqtmr::convert_tmhmm_to_pureseqtm_topology(t_tmhmm_topology)

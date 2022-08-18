@@ -7,29 +7,6 @@
 #
 csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
 
-proteome <- bbbq::get_proteome(
-  target_name = "human",
-  keep_selenoproteins = FALSE,
-  proteome_type = "representative",
-  data_folder = "."
-)
-topology <- bbbq::get_topology(
-  target_name = "human",
-  keep_selenoproteins = FALSE,
-  proteome_type = "representative",
-  topology_prediction_tool = "tmhmm",
-  data_folder = "."
-)
-testthat::expect_equal(length(proteome), length(topology))
-testthat::expect_true("name" %in% names(proteome))
-testthat::expect_true("sequence" %in% names(proteome))
-testthat::expect_true("name" %in% names(topology))
-testthat::expect_true("sequence" %in% names(topology))
-testthat::expect_equal(proteome$name[1], topology$name[1])
-testthat::expect_equal(nchar(proteome$sequence[1]), nchar(topology$sequence[1]))
-testthat::expect_equal(nchar(proteome$name), nchar(topology$name))
-testthat::expect_equal(nchar(proteome$sequence), nchar(topology$sequence))
-
 n_commas <- 111 # max(stringr::str_count(readr::read_lines("head.csv"), ","))
 n_cols <- n_commas + 1
 # csv_filename <- "head.csv"
@@ -76,4 +53,3 @@ aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+
 t_clean_focal <- t_focal[stringr::str_detect(t_focal$sequence, aa_sequence_regex), ]
 
 readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv", quote = "none")
-
