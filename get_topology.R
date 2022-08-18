@@ -5,4 +5,4 @@ topology <- bbbq::get_topology(
   topology_prediction_tool = "tmhmm",
   data_folder = "."
 )
-
+testthat::expect_true(file.exists("UP000005640_9606_no_u.tmhmm"))

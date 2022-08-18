@@ -15,6 +15,7 @@ for MHC-II and epitopes from IEDB.
 make
 ```
 
+Make sure you got about 18 GB of RAM for `get_epitopes.R`.
 
 ## Methods
 
@@ -22,11 +23,13 @@ make
 graph TD;
     A[Uniprot]-->|Download| B[Human reference proteome without selenoproteins];
     B-->|TMHMM| C[Topology];
+    B-->|Keep only proteins with TMH| BM[Membrane proteins]
+    C-->|Keep only proteins with TMH| BM
     D[IEBD]-->|Download| E[All IEDB MHC ligands];
     E-->|Filter for focal MHC2 ligands with linear sequences| F[Epitope sequences for alleles];
-    B-->|Merge| G[Results];
-    C-->|Merge| G[Results];
-    F-->|Merge| G[Results];
+    BM-->|Calculate distances| G[Distance of each AA to a TMH center];
+    E-->|Merge| G[Distances of epitopes to TMH center];
+    G-->|Merge| G;
 ```
 
 Sketch of merge:

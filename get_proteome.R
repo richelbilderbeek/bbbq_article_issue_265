@@ -4,4 +4,4 @@ proteome <- bbbq::get_proteome(
   proteome_type = "representative",
   data_folder = "."
 )
-
+testthat::expect_true(file.exists("UP000005640_9606_no_u.fasta"))
