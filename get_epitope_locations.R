@@ -9,6 +9,7 @@ epitopes_filename <- "epitopes_for_mhc2_alleles.csv"
 testthat::expect_true(file.exists(epitopes_filename))
 
 epitopes_sequences <- unique(sort(readr::read_csv(epitopes_filename, show_col_types = FALSE)$sequence))
+
 message(length(epitopes_sequences), " unique MHC-II epitope sequences")
 
 proteome <- bbbq::get_proteome(
@@ -18,14 +19,23 @@ proteome <- bbbq::get_proteome(
   data_folder = "."
 )
 
+n_epitopes <- length(epitopes_sequences)
+n_proteins <- nrow(proteome)
 
 epitope_location_list <- list()
 for (i in seq_along(epitopes_sequences)) {
   epitopes_sequence <- epitopes_sequences[i]
-  message(i, "/", length(epitopes_sequences), ": ", epitopes_sequence)
   t <- proteome[stringr::str_detect(epitopes_sequence, proteome$sequence), ]
-  message("Found ", nrow(t), " proteins the epitope is in")
+  message(
+    i, "/", n_epitopes, ": ", epitopes_sequence,
+    ", found in ", nrow(t), "/", n_proteins, " proteins"
+  )
+  if (nrow(t) != 0) {
+    epitope_locations <- dplyr::bind_rows(epitope_location_list)
+    readr::write_csv("epitope_locations_temp.csv")    
+  }
+  
   epitope_location_list[[i]] <- t
 }
-
-
+epitope_locations <- dplyr::bind_rows(epitope_location_list)
+readr::write_csv("epitope_locations.csv")

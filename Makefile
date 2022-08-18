@@ -1,4 +1,4 @@
-all: epitopes_for_mhc2_alleles.csv distances.csv
+all: epitopes_for_mhc2_alleles.csv distances.csv epitope_locations.csv
 
 # epitope_distances.csv: distances.csv epitopes_for_mhc2_alleles.csv
 # Rscript get_epitope_distances.R
