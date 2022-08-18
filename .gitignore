@@ -43,3 +43,4 @@ epitopes_for_mhc2_alleles.csv
 *.fasta
 *.tmhmm
 distances.csv
+*.cvs

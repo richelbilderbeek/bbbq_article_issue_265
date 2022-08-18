@@ -30,12 +30,12 @@ for (i in seq_along(epitopes_sequences)) {
     i, "/", n_epitopes, ": ", epitopes_sequence,
     ", found in ", nrow(t), "/", n_proteins, " proteins"
   )
+  epitope_location_list[[i]] <- t
+  
   if (nrow(t) != 0) {
     epitope_locations <- dplyr::bind_rows(epitope_location_list)
-    readr::write_csv("epitope_locations_temp.csv")    
+    readr::write_csv(epitope_locations, "epitope_locations_temp.csv")    
   }
-  
-  epitope_location_list[[i]] <- t
 }
 epitope_locations <- dplyr::bind_rows(epitope_location_list)
-readr::write_csv("epitope_locations.csv")
+readr::write_csv(epitope_locations, "epitope_locations.csv")
