@@ -44,3 +44,4 @@ epitopes_for_mhc2_alleles.csv
 *.tmhmm
 distances.csv
 *.cvs
+*.csv
