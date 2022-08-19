@@ -58,4 +58,4 @@ aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+
 
 t_clean_focal <- t_focal[stringr::str_detect(t_focal$sequence, aa_sequence_regex), ]
 
-readr::write_csv(t_clean_focal, "epitopes_for_mhc2_alleles.csv", quote = "none")
+readr::write_csv(t_clean_focal, "epitopes_for_mhc1_and_mhc2_alleles.csv", quote = "none")
