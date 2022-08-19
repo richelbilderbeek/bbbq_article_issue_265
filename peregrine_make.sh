@@ -11,7 +11,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
-#SBATCH --mem=10G
+#SBATCH --mem=20G
 #SBATCH --job-name=make
 #SBATCH --output=make_%j.log
 module load R Python
