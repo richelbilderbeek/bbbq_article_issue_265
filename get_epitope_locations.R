@@ -9,7 +9,10 @@ epitopes_filename <- "epitopes_for_mhc2_alleles.csv"
 testthat::expect_true(file.exists(epitopes_filename))
 
 epitopes_sequences <- unique(sort(readr::read_csv(epitopes_filename, show_col_types = FALSE)$sequence))
-
+if (1 == 2) {
+  epitopes_sequences <- epitopes_sequences[1:10]
+}
+  
 message(length(epitopes_sequences), " unique MHC-II epitope sequences")
 
 proteome <- bbbq::get_proteome(
@@ -22,10 +25,15 @@ proteome <- bbbq::get_proteome(
 n_epitopes <- length(epitopes_sequences)
 n_proteins <- nrow(proteome)
 
+
 epitope_location_list <- list()
 for (i in seq_along(epitopes_sequences)) {
   epitopes_sequence <- epitopes_sequences[i]
-  t <- proteome[stringr::str_detect(epitopes_sequence, proteome$sequence), ]
+  t <- proteome[stringr::str_detect(
+    string = proteome$sequence,
+    pattern = epitopes_sequence, 
+  ), ]
+  t$epitopes_sequence <- epitopes_sequence
   message(
     i, "/", n_epitopes, ": ", epitopes_sequence,
     ", found in ", nrow(t), "/", n_proteins, " proteins"
