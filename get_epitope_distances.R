@@ -1,5 +1,4 @@
 # For each epitope, tally the distances
-stop("Not yet")
   
 distances_filename <- "distances.csv"
 testthat::expect_true(file.exists(distances_filename))
