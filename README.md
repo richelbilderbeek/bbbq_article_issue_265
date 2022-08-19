@@ -85,8 +85,14 @@ We expect this to be irrelevant in reality, as:
 
 If you see a bias in negative distances, this cause be the cause.
 
+## Ignore two epitopes in same protein
 
+We assume an epitope to be present in a protein once.
+Partial data shows that in (8 out of 3891 = ) 0.2%
+of all cases this assumption is false.
 
+For the epitopes that appear in a protein twice, 
+only the location of the first is used in the calculations.
 
 ## Create graph from Makefile
 
