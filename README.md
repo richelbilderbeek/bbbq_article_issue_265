@@ -94,6 +94,12 @@ of all cases this assumption is false.
 For the epitopes that appear in a protein twice, 
 only the location of the first is used in the calculations.
 
+```
+Total number proteins-epitope combination: 3899
+1x epitope per protein: 3891
+2x epitope per protein: 8
+```
+
 ## Create graph from Makefile
 
 From https://unix.stackexchange.com/a/576563:

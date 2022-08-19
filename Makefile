@@ -1,5 +1,8 @@
-all: epitope_distances.csv
+all: epitope_distances.csv epitope_distances.png
 
+epitope_distances.png: epitope_distances.csv
+	Rscript plot_epitope_distances.R
+	
 epitope_distances.csv: distances.csv \
                        epitope_locations.csv
 	Rscript get_epitope_distances.R
