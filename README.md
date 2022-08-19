@@ -21,9 +21,12 @@ Make sure you got about 18 GB of RAM for `get_epitopes.R`.
 
 ```mermaid
 graph TD;
-    A[Uniprot]-->|Download| B[Human reference proteome without selenoproteins];
+    A[Uniprot]-->|Download| B[Human reference proteome without selenoproteins\bprotein_name,protein_sequence];
+    B-->|Create look-up table| BL[protein name to protein code look-up table];
     B-->|TMHMM| C[Topology];
+    BL-->|LUT| C;
     B-->|Keep only proteins with TMH| BM[Membrane proteins]
+    BL-->|LUT| BM;
     C-->|Keep only proteins with TMH| BM
     D[IEBD]-->|Download| E[All IEDB MHC ligands];
     E-->|Filter for focal MHC2 ligands with linear sequences| F[Epitope sequences for alleles];
