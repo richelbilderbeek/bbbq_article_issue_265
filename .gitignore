@@ -45,3 +45,4 @@ epitopes_for_mhc2_alleles.csv
 distances.csv
 *.cvs
 *.csv
+*.log
