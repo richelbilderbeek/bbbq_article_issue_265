@@ -9,6 +9,10 @@ for MHC-II and epitopes from IEDB.
 
 ![](bianchi_et_2018_fig_3_raw.png)
 
+## Result
+
+![](epitope_distances.png)
+
 ## Run
 
 ```
