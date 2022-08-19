@@ -1,23 +1,32 @@
-all: epitopes_for_mhc2_alleles.csv distances.csv epitope_locations.csv
+all: epitope_distances.csv
 
-epitope_distances.csv: distances.csv epitopes_for_mhc2_alleles.csv epitope_locations.csv
+epitope_distances.csv: distances.csv \
+                       epitope_locations.csv
 	Rscript get_epitope_distances.R
 
-epitope_locations.csv: UP000005640_9606_no_u.fasta epitopes_for_mhc2_alleles.csv
+epitope_locations.csv: membrane_proteins.fasta \
+                       epitopes_for_mhc1_and_mhc2_alleles.csv \
+                       proteins_lut.csv
 	Rscript get_epitope_locations.R
 
-distances.csv: UP000005640_9606_no_u_tmh_only.tmhmm
+epitopes_for_mhc1_and_mhc2_alleles.csv:
+	Rscript get_epitopes.R
+
+distances.csv: membrane_proteins.tmhmm \
+               membrane_proteins.csv
 	Rscript get_distances.R
 
-UP000005640_9606_no_u_tmh_only.tmhmm UP000005640_9606_no_u_tmh_only.fasta: UP000005640_9606_no_u.tmhmm UP000005640_9606_no_u.fasta
-	Rscript get_proteome_and_topology_tmh_only.R
+membrane_proteins.tmhmm membrane_proteins.fasta: UP000005640_9606_no_u.tmhmm \
+                                                 UP000005640_9606_no_u.fasta \
+                                                 proteins_lut.csv
+	Rscript get_membrane_proteins_sequences_and_topology.R
 
-epitopes_for_mhc2_alleles.csv:
-	Rscript get_epitopes.R
+proteins_lut.csv: UP000005640_9606_no_u.tmhmm \
+                  UP000005640_9606_no_u.fasta
+	Rscript create_proteins_lut.R
 
 UP000005640_9606_no_u.fasta:
 	Rscript get_proteome.R
 
 UP000005640_9606_no_u.tmhmm:
 	Rscript get_topology.R
-
