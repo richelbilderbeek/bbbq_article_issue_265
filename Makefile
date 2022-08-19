@@ -13,7 +13,7 @@ epitopes_for_mhc1_and_mhc2_alleles.csv:
 	Rscript get_epitopes.R
 
 distances.csv: membrane_proteins.tmhmm \
-               membrane_proteins.csv
+               membrane_proteins.fasta
 	Rscript get_distances.R
 
 membrane_proteins.tmhmm membrane_proteins.fasta: UP000005640_9606_no_u.tmhmm \

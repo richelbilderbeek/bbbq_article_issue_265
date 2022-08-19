@@ -41,6 +41,10 @@ df <- read.table(
 )
 t <- dplyr::select(tibble::as_tibble(df), c("Name", "MHC.allele.class", "Description...12", "Allele.Name"))
 t_human <- t[stringr::str_which(t$Name, "human"), ]
+
+message("Unique MHC allele classes: ", unique(t_human[t_human$MHC.allele.class))
+stop("Do again!")
+
 t_human_mhc2 <- t_human[t_human$MHC.allele.class == "II", ]
 t_clean <- dplyr::select(
   t_human_mhc2, c("sequence" = "Description...12"), c("allele_name" = "Allele.Name")
