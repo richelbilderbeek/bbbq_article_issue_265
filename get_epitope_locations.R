@@ -35,10 +35,10 @@ for (i in seq_along(epitopes_sequences)) {
   )
   epitope_location_list[[i]] <- t
   
-  if (nrow(t) != 0) {
-    epitope_locations <- dplyr::bind_rows(epitope_location_list)
-    readr::write_csv(epitope_locations, "epitope_locations_temp.csv")    
-  }
+  #if (nrow(t) != 0) {
+  #  epitope_locations <- dplyr::bind_rows(epitope_location_list)
+  #  readr::write_csv(epitope_locations, "epitope_locations_temp.csv")    
+  #}
 }
 epitope_locations <- dplyr::bind_rows(epitope_location_list)
 readr::write_csv(epitope_locations, "epitope_locations.csv")

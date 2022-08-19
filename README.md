@@ -29,7 +29,7 @@ graph TD;
     BL-->|LUT| BM;
     C-->|Keep only proteins with TMH| BM
     D[IEBD]-->|Download| E[All IEDB MHC ligands];
-    E-->|Filter for focal MHC2 ligands with linear sequences| F[Epitope sequences for alleles];
+    E-->|Filter for focal MHC-I or MHC-II ligands with linear sequences| F[Epitope sequences for alleles];
     BM-->|Calculate distances| G[Distance of each AA to a TMH center];
     E-->|Merge| G[Distances of epitopes to TMH center];
     G-->|Merge| G;
@@ -85,3 +85,20 @@ We expect this to be irrelevant in reality, as:
 
 If you see a bias in negative distances, this cause be the cause.
 
+
+
+
+## Create graph from Makefile
+
+From https://unix.stackexchange.com/a/576563:
+
+```
+cd GitHubs
+git clone https://github.com/lindenb/makefile2graph
+cd makefile2graph
+make
+```
+
+```
+make -Bnd |  ../makefile2graph/make2graph | dot -Tpng -o my_graph.png
+```
