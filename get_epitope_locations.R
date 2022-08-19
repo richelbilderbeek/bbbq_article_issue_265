@@ -5,7 +5,7 @@
 
 proteome_filename <- "membrane_proteins.fasta"
 testthat::expect_true(file.exists(proteome_filename))
-epitopes_filename <- "epitopes_for_mhc2_alleles.csv"
+epitopes_filename <- "epitopes_for_mhc1_and_mhc2_alleles.csv"
 testthat::expect_true(file.exists(epitopes_filename))
 
 epitopes_sequences <- unique(sort(readr::read_csv(epitopes_filename, show_col_types = FALSE)$sequence))
