@@ -13,7 +13,7 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=20G
 #SBATCH --job-name=make
-#SBATCH --output=make_%j.log
-module load R Python
+#SBATCH --output=265.log
+module load R
 echo "make $@"
 make "$@"

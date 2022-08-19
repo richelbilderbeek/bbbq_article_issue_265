@@ -8,7 +8,7 @@
 
 if (peregrine::is_on_peregrine()) {
   csv_filename <- "mhc_ligand_full.csv"
-z} else {
+} else {
   csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
 }
 
