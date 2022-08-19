@@ -5,11 +5,13 @@
 #
 # Unzip it and update the path below
 #
-csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
 
-n_commas <- 111 # max(stringr::str_count(readr::read_lines("head.csv"), ","))
-n_cols <- n_commas + 1
-# csv_filename <- "head.csv"
+if (peregrine::is_on_peregrine()) {
+  csv_filename <- "mhc_ligand_full.csv"
+z} else {
+  csv_filename <- "/media/richel/D2B40C93B40C7BEB/bbbq_article_issue_265/mhc_ligand_full.csv"
+}
+
 if (!file.exists(csv_filename))
 {
   stop(
@@ -22,9 +24,12 @@ if (!file.exists(csv_filename))
     "2. Unzip the file and update the path at the top of this script"
   )
 }
+
 testthat::expect_true(file.exists(csv_filename))
 t <- readr::read_csv(csv_filename, skip = 1, n_max = 1)
 
+n_commas <- 111 # max(stringr::str_count(readr::read_lines("head.csv"), ","))
+n_cols <- n_commas + 1
 first_colnames <- names(t)
 last_colnames <- paste0("V", seq_len(n_commas + 1 - length(first_colnames)))
 testthat::expect_equal(n_cols, length(first_colnames) + length(last_colnames))
@@ -42,14 +47,11 @@ df <- read.table(
 t <- dplyr::select(tibble::as_tibble(df), c("Name", "MHC.allele.class", "Description...12", "Allele.Name"))
 t_human <- t[stringr::str_which(t$Name, "human"), ]
 
-message("Unique MHC allele classes: ", unique(t_human[t_human$MHC.allele.class))
-stop("Do again!")
-
-t_human_mhc2 <- t_human[t_human$MHC.allele.class == "II", ]
+t_human_mhc2 <- t_human[t_human$MHC.allele.class %in% c("I", "II"), ]
 t_clean <- dplyr::select(
   t_human_mhc2, c("sequence" = "Description...12"), c("allele_name" = "Allele.Name")
 )
-t_focal <- dplyr::filter(t_clean, t_clean$allele_name %in% bbbq::get_mhc2_haplotypes())
+t_focal <- dplyr::filter(t_clean, t_clean$allele_name %in% bbbq::get_mhc_allele_names())
 
 # Remove complex epitopes such as HPSFKERFHASVRRL + CITR(R7, R14)
 aa_sequence_regex <- paste0("^[", paste0(Peptides::aaList(), collapse = ""), "]+$")
