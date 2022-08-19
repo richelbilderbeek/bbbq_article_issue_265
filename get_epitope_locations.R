@@ -3,7 +3,7 @@
 # epitope | protein_name
 #
 
-proteome_filename <- "UP000005640_9606_no_u.fasta"
+proteome_filename <- "membrane_proteins.fasta"
 testthat::expect_true(file.exists(proteome_filename))
 epitopes_filename <- "epitopes_for_mhc2_alleles.csv"
 testthat::expect_true(file.exists(epitopes_filename))
