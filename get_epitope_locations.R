@@ -15,12 +15,7 @@ if (1 == 2) {
   
 message(length(epitopes_sequences), " unique MHC-II epitope sequences")
 
-proteome <- bbbq::get_proteome(
-  target_name = "human",
-  keep_selenoproteins = FALSE,
-  proteome_type = "representative",
-  data_folder = "."
-)
+proteome <- pureseqtmr::load_fasta_file_as_tibble(proteome_filename)
 
 n_epitopes <- length(epitopes_sequences)
 n_proteins <- nrow(proteome)
