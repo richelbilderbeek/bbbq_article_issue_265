@@ -1,6 +1,9 @@
-all: epitope_distances.png epitope_distances_per_allele.png
+all: epitope_distances.png \
+  epitope_distances_per_allele_mhc_1.png \
+  epitope_distances_per_allele_mhc_2.png
 
-epitope_distances_per_allele.png: epitope_distances_per_allele.csv
+epitope_distances_per_allele_mhc_1.png epitope_distances_per_allele_mhc_2.png: \
+                                                epitope_distances_per_allele.csv
 	Rscript plot_epitope_distances_per_allele.R
 
 epitope_distances_per_allele.csv: epitope_distances.csv

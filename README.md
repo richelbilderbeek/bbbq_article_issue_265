@@ -47,8 +47,11 @@ graph TD;
     H-->|get_epitope_distances.R| L[epitope_distances.csv<br>epitope,distances_to_tmh_center]
     K-->|get_epitope_distances.R| L
     L-->|plot_epitope_distances.R| M[epitope_distances.png]
-    L-->|get_epitope_distances_per_allele.R| N[epitope_distances_per_allele.csv<br>epitope,allele,distances_to_tmh_center]
-    N-->|plot_epitope_distances_per_allele.R| O[epitope_distances_per_allele.png]
+    L-->|get_epitope_distances_per_allele.R| N[epitope_distances_per_allele.csv<br>epitope_sequence,allele_name,distances_to_tmh_center]
+    N-->|plot_epitope_distances_per_allele.R| O[epitope_distances_per_allele_mhc_1.png]
+    N-->|plot_epitope_distances_per_allele.R| P[epitope_distances_per_allele_mhc_2.png]
+
+
 ```
 
 Note `name` instead of the more expressive `protein_name` is used, due
