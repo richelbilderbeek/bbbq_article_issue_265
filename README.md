@@ -48,7 +48,7 @@ graph TD;
     K-->|get_epitope_distances.R| L
     L-->|plot_epitope_distances.R| M[epitope_distances.png]
     L-->|get_epitope_distances_per_allele.R| N[epitope_distances_per_allele.csv<br>epitope,allele,distances_to_tmh_center]
-    N-->|plot_epitope_distances_per_allele.R| M[epitope_distances_per_allele.png]
+    N-->|plot_epitope_distances_per_allele.R| O[epitope_distances_per_allele.png]
 ```
 
 Note `name` instead of the more expressive `protein_name` is used, due
