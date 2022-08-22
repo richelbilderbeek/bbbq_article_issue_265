@@ -28,24 +28,33 @@ graph TD;
     A[Internet<br>UniProt]-->|get_proteome.R| B[UP000005640_9606_no_u.fasta];
     C[Internet<br>Earlier BBBQ result]-->|get_topology.R| D[UP000005640_9606_no_u.tmhmm];
     A-.->C
-    B-->|create_proteins_lut.R| E[proteins_lut.csv]
-    D-->|create_proteins_lut.R| E[proteins_lut.csv]
+    B-->|create_proteins_lut.R| E[proteins_lut.csv<br>name,full_protein_name]
+    D-->|create_proteins_lut.R| E
     B-->|get_membrane_proteins_sequences_and_topology.R| F[membrane_proteins.fasta]
     D-->|get_membrane_proteins_sequences_and_topology.R| F
     E-->|get_membrane_proteins_sequences_and_topology.R| F
     B-->|get_membrane_proteins_sequences_and_topology.R| G[membrane_proteins.tmhmm]
     D-->|get_membrane_proteins_sequences_and_topology.R| G
     E-->|get_membrane_proteins_sequences_and_topology.R| G
-    F-->|get_distances.R| H[distances.csv]
+    F-->|get_distances.R| H[distances.csv<br>name,position,distance_to_tmh_center]
     G-->|get_distances.R| H
-    I[Internet<br>IEDB]-->|get_epitopes.R| J[epitopes_for_mhc1_and_mhc2_alleles.csv]
-    E-->|get_epitope_locations.R| K[epitope_locations.csv]
+    I[Internet<br>IEDB]-->|get_epitopes.R| J[epitopes_for_mhc1_and_mhc2_alleles.csv<br>sequence,allele_name]
+    E-->|get_epitope_locations.R| KNO[epitope_locations.csv<br>name,sequence,epitopes_sequence]
+    F-->|get_epitope_locations.R| KNO
+    J-->|get_epitope_locations.R| KNO
+    E-->|get_epitope_locations.R| K[epitope_locations.csv<br>protein_name,protein_sequence,epitope_sequence,allele_name]
     F-->|get_epitope_locations.R| K
     J-->|get_epitope_locations.R| K
-    H-->|get_epitope_distances.R| L[epitope_distances.csv]
+    H-->|get_epitope_distances.R| LNO[epitope_distances.csv<br>epitope,distances_to_tmh_center]
+    K-->|get_epitope_distances.R| LNO
+    H-->|get_epitope_distances.R| L[epitope_distances.csv<br>epitope_sequence,allele_name,distances_to_tmh_center]
     K-->|get_epitope_distances.R| L
     L-->|plot_epitope_distances.R| M[epitope_distances.png]
 ```
+
+Note `name` instead of the more expressive `protein_name` is used, due
+to the use of FASTA files: when parsing these, `name` is the default
+column name.
 
 ## Files
 
