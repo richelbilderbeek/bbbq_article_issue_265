@@ -23,6 +23,8 @@ Make sure you got about 18 GB of RAM for `get_epitopes.R`.
 
 ## Methods
 
+I use [https://mermaid.live](https://mermaid.live) to be able to zoom in.
+
 ```mermaid
 graph TD;
     A[Internet<br>UniProt]-->|get_proteome.R| B[UP000005640_9606_no_u.fasta];
@@ -52,15 +54,6 @@ graph TD;
 Note `name` instead of the more expressive `protein_name` is used, due
 to the use of FASTA files: when parsing these, `name` is the default
 column name.
-
-## Files
-
-```mermaid
-graph TD;
-    A[https://www.iedb.org/database_export_v3.php]-->|Click on 'mhc_ligand_full, single_file.zip'| B[https://www.iedb.org/downloader.php?file_name=doc/mhc_ligand_full_single_file.zip];
-    B-->|Unzip| C[mhc_ligand_full.csv];
-    C-->|Run 'do_it.R'| D[epitopes_for_mhc2_alleles.csv];
-```
 
 ## Bias for negative distances
 
