@@ -8,7 +8,6 @@ testthat::expect_true(file.exists(proteome_filename))
 epitopes_filename <- "epitopes_for_mhc1_and_mhc2_alleles.csv"
 testthat::expect_true(file.exists(epitopes_filename))
 
-HIERO
 epitopes_sequences <- unique(sort(readr::read_csv(epitopes_filename, show_col_types = FALSE)$sequence))
 if (1 == 2) {
   epitopes_sequences <- epitopes_sequences[1:10]
