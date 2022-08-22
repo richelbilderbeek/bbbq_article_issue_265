@@ -25,6 +25,31 @@ Make sure you got about 18 GB of RAM for `get_epitopes.R`.
 
 ```mermaid
 graph TD;
+    A[Internet<br>UniProt]-->|get_proteome.R| B[UP000005640_9606_no_u.fasta];
+    C[Internet<br>Earlier BBBQ result]-->|get_topology.R| D[UP000005640_9606_no_u.tmhmm];
+    A-.->C
+    B-->|create_proteins_lut.R| E[proteins_lut.csv]
+    D-->|create_proteins_lut.R| E[proteins_lut.csv]
+    B-->|get_membrane_proteins_sequences_and_topology.R| F[membrane_proteins.fasta]
+    D-->|get_membrane_proteins_sequences_and_topology.R| F
+    E-->|get_membrane_proteins_sequences_and_topology.R| F
+    B-->|get_membrane_proteins_sequences_and_topology.R| G[membrane_proteins.tmhmm]
+    D-->|get_membrane_proteins_sequences_and_topology.R| G
+    E-->|get_membrane_proteins_sequences_and_topology.R| G
+    F-->|get_distances.R| H[distances.csv]
+    G-->|get_distances.R| H
+    I[Internet<br>IEDB]-->|get_epitopes.R| J[epitopes_for_mhc1_and_mhc2_alleles.csv]
+    E-->|get_epitope_locations.R| K[epitope_locations.csv]
+    F-->|get_epitope_locations.R| K
+    J-->|get_epitope_locations.R| K
+    H-->|get_epitope_distances.R| L[epitope_distances.csv]
+    K-->|get_epitope_distances.R| L
+    L-->|plot_epitope_distances.R| M[epitope_distances.png]
+```
+
+
+```mermaid
+graph TD;
     A[Uniprot]-->|Download\nget_proteome.R| B[Human reference proteome without selenoproteins\nUP000005640_9606_no_u.fasta\nprotein_name,protein_sequence];
     B-->|Create look-up table| BL[protein name to protein code look-up table\nproteins_lut.csv\name,full_protein_name];
     T[Download\nUP000005640_9606_no_u.tmhmm\nfull_protein_name,topology]-->|TMHMM| C[Topology];
