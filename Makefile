@@ -1,8 +1,14 @@
-all: epitope_distances.csv epitope_distances.png
+all: epitope_distances.png epitope_distances_per_allele.png
+
+epitope_distances_per_allele.png: epitope_distances_per_allele.csv
+	Rscript plot_epitope_distances_per_allele.R
+
+epitope_distances_per_allele.csv: epitope_distances.csv
+	Rscript get_epitope_distances_per_allele.R
 
 epitope_distances.png: epitope_distances.csv
 	Rscript plot_epitope_distances.R
-	
+
 epitope_distances.csv: distances.csv \
                        epitope_locations.csv
 	Rscript get_epitope_distances.R
