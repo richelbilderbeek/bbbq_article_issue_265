@@ -25,10 +25,11 @@ Make sure you got about 18 GB of RAM for `get_epitopes.R`.
 
 ```mermaid
 graph TD;
-    A[Uniprot]-->|Download| B[Human reference proteome without selenoproteins\bprotein_name,protein_sequence];
-    B-->|Create look-up table| BL[protein name to protein code look-up table];
-    B-->|TMHMM| C[Topology];
-    BL-->|LUT| C;
+    A[Uniprot]-->|Download\nget_proteome.R| B[Human reference proteome without selenoproteins\nUP000005640_9606_no_u.fasta\nprotein_name,protein_sequence];
+    B-->|Create look-up table| BL[protein name to protein code look-up table\nproteins_lut.csv\name,full_protein_name];
+    T[Download\nUP000005640_9606_no_u.tmhmm\nfull_protein_name,topology]-->|TMHMM| C[Topology];
+    BL-->|LUT\nproteins_lut.csv\name,fullproteinname| C[membrane_proteins.tmhmm\nname,topology];
+
     B-->|Keep only proteins with TMH| BM[Membrane proteins]
     BL-->|LUT| BM;
     C-->|Keep only proteins with TMH| BM

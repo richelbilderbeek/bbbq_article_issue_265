@@ -28,8 +28,10 @@ proteins_lut.csv: UP000005640_9606_no_u.tmhmm \
                   UP000005640_9606_no_u.fasta
 	Rscript create_proteins_lut.R
 
-UP000005640_9606_no_u.fasta:
-	Rscript get_proteome.R
 
 UP000005640_9606_no_u.tmhmm:
 	Rscript get_topology.R
+
+UP000005640_9606_no_u.fasta:
+	Rscript get_proteome.R
+
