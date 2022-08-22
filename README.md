@@ -39,13 +39,13 @@ graph TD;
     F-->|get_distances.R| H[distances.csv<br>name,position,distance_to_tmh_center]
     G-->|get_distances.R| H
     I[Internet<br>IEDB]-->|get_epitopes.R| J[epitopes_for_mhc1_and_mhc2_alleles.csv<br>sequence,allele_name]
-    E-->|get_epitope_locations.R| KNO[epitope_locations.csv<br>name,sequence,epitopes_sequence]
+    E-->|get_epitope_locations.R| KNO[OLD<br>epitope_locations.csv<br>name,sequence,epitopes_sequence]
     F-->|get_epitope_locations.R| KNO
     J-->|get_epitope_locations.R| KNO
     E-->|get_epitope_locations.R| K[epitope_locations.csv<br>protein_name,protein_sequence,epitope_sequence,allele_name]
     F-->|get_epitope_locations.R| K
     J-->|get_epitope_locations.R| K
-    H-->|get_epitope_distances.R| LNO[epitope_distances.csv<br>epitope,distances_to_tmh_center]
+    H-->|get_epitope_distances.R| LNO[OLD<br>epitope_distances.csv<br>epitope,distances_to_tmh_center]
     K-->|get_epitope_distances.R| LNO
     H-->|get_epitope_distances.R| L[epitope_distances.csv<br>epitope_sequence,allele_name,distances_to_tmh_center]
     K-->|get_epitope_distances.R| L
