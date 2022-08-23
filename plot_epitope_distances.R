@@ -13,3 +13,5 @@ my_plot <- ggplot2::ggplot(
     ggplot2::geom_vline(xintercept = tmh_width / 2)
 
 ggplot2::ggsave("epitope_distances.png", plot = my_plot, width = 7, height = 7)
+
+ggplot2::ggsave("epitope_distances.eps", plot = my_plot, width = 7, height = 7)

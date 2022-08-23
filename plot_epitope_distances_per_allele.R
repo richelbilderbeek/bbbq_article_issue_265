@@ -14,6 +14,7 @@ mhc_1 <- ggplot2::ggplot(
   ggplot2::facet_grid(allele_name ~ ., scales = "free_y")
 
 ggplot2::ggsave("epitope_distances_per_allele_mhc_1.png", plot = mhc_1, width = 7, height = 35)
+ggplot2::ggsave("epitope_distances_per_allele_mhc_1.eps", plot = mhc_1, width = 7, height = 35)
 
 mhc_2 <- ggplot2::ggplot(
   dplyr::filter(epitope_distances_per_allele, allele_name %in% bbbq::get_mhc2_allele_names()),
@@ -25,3 +26,4 @@ mhc_2 <- ggplot2::ggplot(
   ggplot2::facet_grid(allele_name ~ ., scales = "free_y")
 
 ggplot2::ggsave("epitope_distances_per_allele_mhc_2.png", plot = mhc_2, width = 7, height = 35)
+ggplot2::ggsave("epitope_distances_per_allele_mhc_2.eps", plot = mhc_2, width = 7, height = 35)
