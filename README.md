@@ -13,7 +13,9 @@ for MHC-II and epitopes from IEDB.
 
 ![](results/epitope_distances.png)
 
-![](results/epitope_distances_combined.png)
+![](results/epitope_distances_per_allele_mhc_1.png)
+
+![](results/epitope_distances_per_allele_mhc_2.png)
 
 ## Run
 
