@@ -11,6 +11,8 @@ for MHC-II and epitopes from IEDB.
 
 ## Result
 
+![](results/epitope_distances.png)
+
 ![](results/epitope_distances_combined.png)
 
 ## Run
